@@ -1,3 +1,5 @@
+// centralised part for all other routes
+
 const express = require('express');
 
 const router = express.Router();
