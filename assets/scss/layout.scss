@@ -1,4 +1,72 @@
 body{
     margin: 0;
     /* text-align: center; */
+    background-color: rgb(245, 195,194);
+    .sign-in-up{
+        position: relative;
+        margin-left: 2%;
+        left: 40%;
+        width: max-content;
+       
+        
+        .style{
+            position: absolute;
+            background-color:  rgba(76, 0, 130, 0.932);
+            height: 20px;
+            width: 20px;
+            border-radius:50% 0 50% 0;
+            top: 5%;
+            z-index: -1;
+           
+        }
+        h1{
+            color: rgb(207, 100, 154);
+            font-family: 'Lobster', cursive;
+           
+        }
+
+        .underline{
+            position: absolute;
+            background-color: rgba(76, 0, 130, 0.932);
+            height: 2px;
+            width: 100%;
+            bottom: -1px;
+            transform: rotate(-5deg);
+            box-shadow: -1px 0px 4px 1px  rgb(207, 100, 154);
+
+        }
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        input{
+            width: 30%;
+            margin: 0.2rem;
+            padding: 0.2rem;
+            border-radius: 10px;
+            padding: 0.3rem;
+            border: none;
+            border-bottom: 2px solid plum;
+            background: transparent;
+            font-family: lobster;
+            font-size: larger;
+        }
+        input:focus{
+            outline: none;
+        }
+
+        input[type=submit]{
+            color: rgb(255, 151, 203);
+            background-color: rgba(134, 71, 179, 0.932);
+        }
+        input[type=submit]:hover{
+            background-color: rgb(255, 151, 203);
+            color: rgba(134, 71, 179, 0.932);
+        }
+
+    }
 }

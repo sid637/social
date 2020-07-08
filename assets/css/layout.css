@@ -1,3 +1,52 @@
 body {
   margin: 0;
-  /* text-align: center; */ }
+  /* text-align: center; */
+  background-color: #f5c3c2; }
+  body .sign-in-up {
+    position: relative;
+    margin-left: 2%;
+    left: 40%;
+    width: max-content; }
+    body .sign-in-up .style {
+      position: absolute;
+      background-color: rgba(76, 0, 130, 0.932);
+      height: 20px;
+      width: 20px;
+      border-radius: 50% 0 50% 0;
+      top: 5%;
+      z-index: -1; }
+    body .sign-in-up h1 {
+      color: #cf649a;
+      font-family: 'Lobster', cursive; }
+    body .sign-in-up .underline {
+      position: absolute;
+      background-color: rgba(76, 0, 130, 0.932);
+      height: 2px;
+      width: 100%;
+      bottom: -1px;
+      transform: rotate(-5deg);
+      box-shadow: -1px 0px 4px 1px #cf649a; }
+  body form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    body form input {
+      width: 30%;
+      margin: 0.2rem;
+      padding: 0.2rem;
+      border-radius: 10px;
+      padding: 0.3rem;
+      border: none;
+      border-bottom: 2px solid plum;
+      background: transparent;
+      font-family: lobster;
+      font-size: larger; }
+    body form input:focus {
+      outline: none; }
+    body form input[type=submit] {
+      color: #ff97cb;
+      background-color: rgba(134, 71, 179, 0.932); }
+    body form input[type=submit]:hover {
+      background-color: #ff97cb;
+      color: rgba(134, 71, 179, 0.932); }

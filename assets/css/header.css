@@ -1,0 +1,22 @@
+header {
+  background-color: rgba(76, 0, 130, 0.932);
+  color: #ff5bad;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  box-shadow: inset 0px 0px 6px 2px  #ff5bad; }
+  header div {
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+    font-size: 1.4rem;
+    font-family: 'Bangers', cursive; }
+  header ul {
+    margin-right: 2%; }
+  header li {
+    list-style: none; }
+    header li a {
+      color: #f56494;
+      text-decoration: none;
+      font-family: 'Heebo', sans-serif;
+      font-size: medium; }
