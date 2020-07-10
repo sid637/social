@@ -13,7 +13,14 @@ module.exports.home = function(req,res){
 
     // finding the post and populating the user of each post
     // just need to prepopulate the user and we need to do call back in exec
-    Post.find({}).populate('user').exec(function(err, posts){
+    
+    //nested population 
+    Post.find({}).populate('user').populate({
+        path: 'comments',
+        populate: {
+            path: 'user'
+        }
+    }).exec(function(err, posts){
 
         return res.render('home.ejs',{
                     title: "Codeial | Home",
