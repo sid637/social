@@ -1,8 +1,10 @@
 const passport = require('passport');
-const User = require('../models/user');
 
 // need to require passport
 const LocalStrategy = require('passport-local').Strategy;
+const User = require('../models/user');
+
+
 
 
 // authentication using passport
@@ -10,23 +12,27 @@ const LocalStrategy = require('passport-local').Strategy;
 // we need to tell passport to use this local authentication
 passport.use(new LocalStrategy(
     {
-    usernameField: 'email'
-    
+    usernameField: 'email',
+
+    // this basically allows to set the first argument as request
+    passReqToCallback: true
     },
     
     // callback function inbuilt
     // whenever a local strategy is called on email and password will be passed on
     // done(it is call back function reporting to passport.js) function will be called based on successful or unsuccessful
-    function(email, password, done){
+    function(req, email, password, done){
         // find a user and established their identity
         User.findOne({email: email}, function(err, user){
             if(err){
-                console.log('Error in finding a user --> Passport');
+                req.flash('error', err);
+                // console.log('Error in finding a user --> Passport');
                 return done(err);
             }
 
             if(!user || user.password != password){
-                console.log('Invalid Username/Password');
+                req.flash('success', 'Invalid Username/Password');
+                // console.log('Invalid Username/Password');
 
                 // here err is null and authentication has not been done( i.e flase)
                 return done(null, false);

@@ -10,7 +10,7 @@ module.exports.create = async function(req, res){
 
         // if post exists then create a comment
      if(post){
-        Comment.create({
+       let comment = await Comment.create({
             content: req.body.content,
             post: req.body.post,
             user: req.user._id
@@ -20,13 +20,14 @@ module.exports.create = async function(req, res){
         post.comments.push(comment);
             // to save in the database
         post.save();
+        req.flash('success', 'Comment published!');
 
         res.redirect('/');
         }
 
        
     }catch(err){
-       console.log('Error', err);
+        req.flash('error', err);
        return;
    }
    
@@ -51,14 +52,16 @@ module.exports.destroy = async function(req, res){
             let post =  Post.findByIdAndUpdate(postId,
                  { $pull: {comments: req.params.id}});
 
+               
+                req.flash('success', 'Comment deleted!');
                 return res.redirect('back');
-            
         }else{
+                req.flash('error', 'Unauthorized');
                 return res.redirect('back');
         }
 
     }catch(err){
-        console.log('Error', err);
+        req.flash('error', err);
         return;
     }
 }
