@@ -20,6 +20,7 @@
             $.ajax({
                 type: 'post',
                 url: '/posts/create',
+                // The serialize() method creates a URL encoded text string by serializing form values.
                 data: newPostForm.serialize(),
                 success: function(data){
                     let newPost = newPostDom(data.data.post);
