@@ -28,10 +28,15 @@ app.use(sassMiddleware({
 
 app.use(express.urlencoded());
 
+
 app.use(cookieParser());
 
 // static files
 app.use(express.static('./assets'));
+
+// make the upload path available to the browser
+app.use('/uploads', express.static(__dirname + '/uploads'));
+
 // before routes
 app.use(expressLayouts);
 
