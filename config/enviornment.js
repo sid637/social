@@ -24,8 +24,8 @@ const development = {
         secure: false,
         // authenticate user
         auth: {
-            user: 'sidsharma637@gmail.com',
-            pass: 'sanskrit.......'
+            // user: '@gmail.com',
+            // pass: ''
         }
     },
     google_client_id: "469209458720-0j8isc2sqjoq1v0k589aa3pp4pr45bjf.apps.googleusercontent.com",
