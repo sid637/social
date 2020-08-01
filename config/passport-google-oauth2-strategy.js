@@ -2,16 +2,16 @@ const passport = require('passport');
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const crypto = require('crypto');
 const User = require('../models/user');
-const { access } = require('fs');
-
+const fs = require('fs');
+const env = require('./enviornment');
 
 
 
 // tell passport to use a new strategy for google login
 passport.use(new googleStrategy({
-    clientID: "469209458720-0j8isc2sqjoq1v0k589aa3pp4pr45bjf.apps.googleusercontent.com",
-    clientSecret: "PCvLwuHcCmJ_MtybWenwvdFY",
-    callbackURL: "http://localhost:8000/users/auth/google/callback"
+    clientID: env.google_client_id,
+    clientSecret: env.google_client_secret,
+    callbackURL: env.google_call_back_url
 },
 // A refresh token is a special kind of token that can be used to obtain a renewed access token
     function(accessToken, refreshToken, profile, done){

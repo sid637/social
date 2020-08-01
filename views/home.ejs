@@ -1,4 +1,5 @@
- <link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="<%= assetPath('css/home.css') %>">
+<link rel="stylesheet" href="<%= assetPath('css/chat_box.css') %>">
 
  <h1>Codeial / <%= title %></h1>
 <div id="home-container">
@@ -23,7 +24,32 @@
         </section>
        
         <section id="user-friends">
-                <h4>Friends</h4>
+
+                <div id="friends-container">
+                        <h4>
+                            Friends
+                        </h4>
+                        <ul class="list-group">
+                            <%if(locals.friends.length == 0){%>
+                            <h6>Friends list is empty.</h6>
+                            <%}%>
+                            <%for(fr of locals.friends){%>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div class='d-flex justify-content-around align-items-center'>
+                                    <div style="height:40px;width:40px;border-radius: 50%;">
+                                        <img src="<%=fr.friend_avatar%>" style="height:100%; width:100%; border-radius:inherit;">
+                                    </div>
+                                    <div class="ml-2">
+                                        <a href="/users/profile/<%=fr.friend_id%>"><%=fr.friend_name%></a>
+                                    </div>
+                                </div>
+                                <a class="badge badge-primary"><i class="fas fa-comment"></i></a>
+                            </li>
+                            <%}%>
+                        </ul>
+                    </div>
+
+                <h4>All Users</h4>
                 <% for(u of all_users) { %>
                        <p>
                                <a href="/users/profile/<%= u.id  %>"><%= u.name %></a>
@@ -31,10 +57,39 @@
                        
                        <% } %>
         </section>
+
+        <!-- chat box -->
+        <%- include('_chat_box') -%>
+
 </div>
 <!-- importing this script for creating the comments -->
-<script src="/js/home_post_comments.js" ></script>
-<script src="/js/home_posts.js"></script>
+<script src="<%= assetPath('js/home_post_comments.js') %>" ></script>
+<script src="<%= assetPath('js/home_posts.js') %>"></script>
+
+<!-- importing the script file for toggling likes -->
+<script src="<%= assetPath('js/toggle_likes.js') %>"></script>
+<script>
+        $('.toggle-like-button').each(function(){
+                let self = this;
+                let toggleLike = new ToggleLike(self);
+        });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script src="<%= assetPath('js/chat_engine.js') %>"></script>
+
+<% if (locals.user){ %>
+<script>
+        new ChatEngine('user-chat-box', '<%= locals.user.email %>')
+
+        /* adding "open chatbox on click"  on each badge */
+    $('#friends-container .badge').click(function(event)
+    {
+        event.preventDefault();
+        $('#user-chat-box').toggleClass('d-none');
+    })
+</script>
+
+<% } %>
 
  
       

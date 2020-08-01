@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
+const friendship_controller=require('../controllers/friendship_controller');
 
 const usersController = require('../controllers/users_controller');
 const postsController = require('../controllers/posts_controller');
+
 
 router.get('/profile/:id', passport.checkAuthentication, usersController.profile);
 router.post('/update/:id', passport.checkAuthentication, usersController.update);
@@ -12,6 +14,9 @@ router.post('/update/:id', passport.checkAuthentication, usersController.update)
 
 router.get('/sign-up', usersController.signUp);
 router.get('/sign-in', usersController.signIn);
+
+router.get('/profile/:id/toggle_friend', friendship_controller.toggle_friendship);
+
 
 
 //  to create a user

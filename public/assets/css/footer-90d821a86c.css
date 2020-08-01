@@ -1,0 +1,12 @@
+footer {
+  width: 100%;
+  background-color: #cf649a;
+  font-family: 'Overpass', sans-serif;
+  font-weight: bolder;
+  display: flex;
+  justify-content: start; }
+  footer ul li {
+    list-style: none; }
+    footer ul li a {
+      text-decoration: none;
+      color: rgba(76, 0, 130, 0.932); }
