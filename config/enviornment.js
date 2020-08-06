@@ -64,6 +64,6 @@ const production = {
     }
 
 }
-
+console.log(process.env.CODEIAL_ENVIORNMENT);
 module.exports = eval(process.env.CODEIAL_ENVIORNMENT) == undefined ? development : eval(process.env.CODEIAL_ENVIORNMENT);
-// module.exports = development;
+// module.exports = development; ye 2 2 naam ku use kiye h bhyi 

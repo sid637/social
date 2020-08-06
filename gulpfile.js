@@ -39,7 +39,7 @@ gulp.task('js', function(done){
         merge: true
     }))
     .pipe(gulp.dest('./public/assets'));
-    done()
+    done();
 });
 
 
